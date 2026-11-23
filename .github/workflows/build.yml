@@ -37,7 +37,7 @@ jobs:
         shell: bash
         run: |
           dylib=build/TikTokQuality.dylib
-          xcrun lipo -verify_arch arm64 "$dylib"
+          xcrun lipo "$dylib" -verify_arch arm64
           metadata="$(xcrun vtool -show-build "$dylib")"
           printf '%s\n' "$metadata"
           grep -Eq '^[[:space:]]*platform[[:space:]]+IOS[[:space:]]*$' <<< "$metadata"
